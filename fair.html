@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fair or Unfair</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f0f8ff;
+    }
+
+    h1 {
+      margin-bottom: 50px;
+    }
+
+    .button {
+      font-size: 24px;
+      padding: 20px 40px;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .fair {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .unfair {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .pressed {
+      opacity: 0.6;
+    }
+
+    #result {
+      margin-top: 40px;
+      font-size: 28px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Is it Fair or Unfair?</h1>
+  <button class="button fair" onclick="handlePress('Fair')">Fair</button>
+  <button class="button unfair" onclick="handlePress('Unfair')">Unfair</button>
+
+  <div id="result"></div>
+
+  <script>
+    function handlePress(choice) {
+      const btn = document.querySelector(`.${choice.toLowerCase()}`);
+      btn.classList.add('pressed');
+      setTimeout(() => {
+        btn.classList.remove('pressed');
+      }, 200);
+      document.getElementById('result').textContent = `You pressed: ${choice}`;
+    }
+  </script>
+</body>
+</html>
