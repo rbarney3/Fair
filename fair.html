@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fair or Unfair</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s ease;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    button {
+      width: 90%;
+      height: 40%;
+      font-size: 48px;
+      margin: 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      color: white;
+      transition: transform 0.1s;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .fair {
+      background-color: #4CAF50;
+    }
+
+    .unfair {
+      background-color: #f44336;
+    }
+
+    .disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    #message {
+      position: absolute;
+      bottom: 40px;
+      font-size: 32px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="fair" onclick="handlePress('Fair')">FAIR</button>
+    <button class="unfair" onclick="handlePress('Unfair')">UNFAIR</button>
+  </div>
+  <div id="message"></div>
+
+  <script>
+    function handlePress(choice) {
+      const body = document.body;
+      const fairBtn = document.querySelector('.fair');
+      const unfairBtn = document.querySelector('.unfair');
+      const message = document.getElementById('message');
+
+      // Disable buttons
+      fairBtn.classList.add('disabled');
+      unfairBtn.classList.add('disabled');
+
+      if (choice === 'Fair') {
+        body.style.backgroundColor = '#4CAF50';
+        message.textContent = 'You pressed FAIR';
+      } else {
+        body.style.backgroundColor = '#f44336';
+        message.textContent = 'You pressed UNFAIR';
+      }
+
+      // Reset after 5 seconds
+      setTimeout(() => {
+        body.style.backgroundColor = '';
+        message.textContent = '';
+        fairBtn.classList.remove('disabled');
+        unfairBtn.classList.remove('disabled');
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
